@@ -1,11 +1,12 @@
 import './ItemPage.scss';
-import {Link, NavigateFunction, useNavigate, useParams} from 'react-router-dom'
+import { Link, NavigateFunction, useNavigate, useParams } from 'react-router-dom'
 import { catalog } from '../../core/data/catalog.data';
 import { ReactComponent as CartLogo } from '../../assets/cart.svg';
 import { ItemSlider } from '../../components/simple/item-slider/ItemSlider';
-import {ShopState} from '../../core/state/ShopState'
-import {NotFoundPage} from '../not-found-page/NotFoundPage'
-import {observer} from 'mobx-react-lite'
+import { ShopState } from '../../core/state/ShopState'
+import { NotFoundPage } from '../not-found-page/NotFoundPage'
+import { observer } from 'mobx-react-lite'
+import React from 'react';
 
 interface IItemPageProps {
     state: ShopState
@@ -18,7 +19,7 @@ export const ItemPage = observer((props: IItemPageProps): JSX.Element => {
     const products = catalog.products.find((el) => `${el.id}` === prodId);
 
     if (products === undefined) {
-        return  <NotFoundPage/>;
+        return <NotFoundPage />;
     }
 
     const isItemInCard: boolean = props.state.isItemInCart(products.id);
@@ -33,6 +34,17 @@ export const ItemPage = observer((props: IItemPageProps): JSX.Element => {
         props.state.buyNow(products);
         navigate('/cart');
     }
+    const [images, setImages] = React.useState(products.images);
+    const [title, setTitle] = React.useState(products.title);
+    React.useEffect(() => {
+        console.log(params);
+        const prodId = params.id;
+        const products = catalog.products.find((el) => `${el.id}` === prodId);
+        const images = products ? [...products.images] : [];
+        const title = products ? products.title : '';
+        setImages(images);
+        setTitle(title);
+    }, [params]);
 
     return (
         <section className='item'>
@@ -54,7 +66,7 @@ export const ItemPage = observer((props: IItemPageProps): JSX.Element => {
                 </ul>
                 <h2 className='item__wrap__title'>{products.title}</h2>
                 <div className='item__wrap__info'>
-                    <ItemSlider images={products.images} title={products.title} />
+                    <ItemSlider images={images} title={title} />
 
                     <div className='item__wrap__info__about'>
                         <div className='item__wrap__info__about__block'>

@@ -128,6 +128,9 @@ export const ItemsPage = (props: IItemsPageProps): JSX.Element => {
         setProds(items);
         setSearchParams(urlParam);
     }
+    const hiddenMessageStyle = { display: 'none' };
+    const visibleMessageStyle = { display: 'block' };
+
 
     React.useEffect((): void => {
         setSearchParams(modifyItems.urlParams);
@@ -176,6 +179,10 @@ export const ItemsPage = (props: IItemsPageProps): JSX.Element => {
                                 List
                             </button>
                         </div>
+                    </div>
+                    <div className='catalog__wrap__items__message'                        >
+                        {prods.length === 0 ?
+                            <h4>Sorry we find nothing</h4> : ''}
                     </div>
 
                     <div className='catalog__wrap__items__items-wrap'>

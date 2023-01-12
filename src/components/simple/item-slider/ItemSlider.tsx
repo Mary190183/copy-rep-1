@@ -14,17 +14,17 @@ type ImgPreview = {
 }
 
 export const ItemSlider = (props: ItemSliderProps) => {
-    const images = [...props.images];
-    const lastSRC = images.pop();
-    if (lastSRC !== undefined) {
-        images.unshift(lastSRC);
-    }
+    const images = props.images;
+    // let lastSRC = images.pop();
+    // if (lastSRC !== undefined) {
+    //     images.unshift(lastSRC);
+    // }
 
-    const imagesSet: ImgPreview[] = images.map((src, i) => {
+    let imagesSet: ImgPreview[] = images.map((src, i) => {
         const isActive = (i == 0);
         return {
             id: `${props.title}_${i}`,
-            src: src,
+            src: images[i],
             title: props.title,
             isActive: isActive,
         }
@@ -49,7 +49,7 @@ export const ItemSlider = (props: ItemSliderProps) => {
         setProds(imagesSet);
     }
 
-    const views: JSX.Element[] = prods.map((el) => {
+    let views: JSX.Element[] = prods.map((el) => {
         const className = el.isActive ? 'slider__preview__img-active' : 'slider__preview__img';
 
         return (
@@ -62,6 +62,32 @@ export const ItemSlider = (props: ItemSliderProps) => {
             </li>
         );
     });
+
+    React.useEffect(() => {
+        imagesSet = images.map((src, i) => {
+            const isActive = (i == 0);
+            return {
+                id: `${props.title}_${i}`,
+                src: images[i],
+                title: props.title,
+                isActive: isActive,
+            }
+        });
+        setProds(imagesSet);
+        views = prods.map((el) => {
+            const className = el.isActive ? 'slider__preview__img-active' : 'slider__preview__img';
+            return (
+                <li
+                    key={el.id}
+                    id={el.id}
+                    className={className}
+                    onClick={change}>
+                    <img src={el.src} alt={el.title} />
+                </li>
+            );
+        });
+        setSRC(images[0]);
+    }, [images]);
 
     return (
         <div className='slider'>
