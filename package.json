@@ -37,7 +37,8 @@
     "build": "react-scripts build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "test": "jest"
   },
   "eslintConfig": {
     "extends": [
