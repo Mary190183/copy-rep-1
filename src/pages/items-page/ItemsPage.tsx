@@ -24,7 +24,7 @@ export const ItemsPage = (props: IItemsPageProps): JSX.Element => {
     let viewItems: 'card' | 'list' = 'card';
     let cardViewClass: 'active-view' | '' = 'active-view';
     let listViewClass: 'active-view' | '' = '';
-    
+
     const getCurrentParams = () => {
         let isParam = searchParams.toString() !== '';
         const settings = toolsModel.resetToolsSettings(toolsSetting);
@@ -128,6 +128,9 @@ export const ItemsPage = (props: IItemsPageProps): JSX.Element => {
         setProds(items);
         setSearchParams(urlParam);
     }
+    const hiddenMessageStyle = { display: 'none' };
+    const visibleMessageStyle = { display: 'block' };
+
 
     React.useEffect((): void => {
         setSearchParams(modifyItems.urlParams);
@@ -136,6 +139,8 @@ export const ItemsPage = (props: IItemsPageProps): JSX.Element => {
     return (
         <section className='catalog'>
             <div className='catalog__wrap'>
+                <a className="catalog__wrap__pr" href='https://github.com/MaryAnzh/Online-Store/pull/79' target={'_blank'}>PR Task Link: https://github.com/MaryAnzh/Online-Store/pull/79</a>
+
                 <section className='catalog__wrap__info-wrap'>
                     <div className='catalog__wrap__info-wrap__info'>
                         <h3 className='catalog__wrap__info-wrap__info__title'>
@@ -174,6 +179,10 @@ export const ItemsPage = (props: IItemsPageProps): JSX.Element => {
                                 List
                             </button>
                         </div>
+                    </div>
+                    <div className='catalog__wrap__items__message'                        >
+                        {prods.length === 0 ?
+                            <h4>Sorry we find nothing</h4> : ''}
                     </div>
 
                     <div className='catalog__wrap__items__items-wrap'>
