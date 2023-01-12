@@ -4,10 +4,17 @@
   "private": true,
   "homepage": "https://maryanzh.github.io/Online-Store",
   "contributors": [
-    {"name": "Maryia Vashchayeva @maryanzh", "url": "https://github.com/MaryAnzh"},
-    {"name": "Nikita Slutski @user-of-github", "url":  "https://github.com/user-of-github"}
+    {
+      "name": "Maryia Vashchayeva @maryanzh",
+      "url": "https://github.com/MaryAnzh"
+    },
+    {
+      "name": "Nikita Slutski @user-of-github",
+      "url": "https://github.com/user-of-github"
+    }
   ],
   "dependencies": {
+    "@jest/globals": "^29.3.1",
     "@react-rxjs/core": "^0.10.3",
     "@react-rxjs/utils": "^0.9.5",
     "@types/node": "^16.18.9",
@@ -22,7 +29,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.5.0",
     "react-scripts": "5.0.1",
-    "rxjs": "^7.8.0"
+    "rxjs": "^7.8.0",
+    "ts-jest": "^29.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -50,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "@types/jest": "^29.2.5",
     "@types/sass": "^1.43.1",
     "@types/sass-loader": "^8.0.3",
     "@types/webpack": "^5.28.0",
@@ -61,6 +70,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.31.11",
+    "jest": "^29.3.1",
     "postcss-normalize": "^10.0.1",
     "sass": "^1.56.2",
     "sass-loader": "^13.2.0",

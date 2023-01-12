@@ -30,8 +30,6 @@ interface IPersonalDataFormProps {
 }
 
 
-
-
 export const PersonalDataForm = (props: IPersonalDataFormProps): JSX.Element => {
     const [name, setName] = React.useState<string>('')
     const [nameInvalid, setNameInvalid] = React.useState<boolean>(false)
