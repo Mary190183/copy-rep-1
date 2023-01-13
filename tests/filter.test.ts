@@ -34,6 +34,9 @@ describe('Filter items by filtering param', () => {
         const namesForTest2 = 'brand';
 
         expect(toolsModel.createSelectViewByToolsTitle(namesForTest1, items).length).toBe(1);
+        expect(toolsModel.createSelectViewByToolsTitle(namesForTest1, items)).toEqual(['smartphones']);
         expect(toolsModel.createSelectViewByToolsTitle(namesForTest2, items).length).toBe(3);
+        expect(toolsModel.createSelectViewByToolsTitle(namesForTest2, items)).toEqual([ 'Apple', 'Samsung', 'OPPO' ]);
+
     });
 });
