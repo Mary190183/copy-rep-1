@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ItemSlider.scss';
 
-type ItemSliderProps = {
+export type ItemSliderProps = {
     title: string,
     images: string[],
 }
@@ -15,10 +15,6 @@ type ImgPreview = {
 
 export const ItemSlider = (props: ItemSliderProps) => {
     const images = props.images;
-    // let lastSRC = images.pop();
-    // if (lastSRC !== undefined) {
-    //     images.unshift(lastSRC);
-    // }
 
     let imagesSet: ImgPreview[] = images.map((src, i) => {
         const isActive = (i == 0);
